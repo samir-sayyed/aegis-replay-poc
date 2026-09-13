@@ -1,0 +1,6 @@
+**/.build/
+**/build/
+**/node_modules/
+**/reports/*.xml
+**/reports/*.log
+**/__pycache__/
