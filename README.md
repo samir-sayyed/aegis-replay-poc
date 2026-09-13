@@ -1,5 +1,7 @@
 # Aegis Replay public proof-of-concept
 
+Licensed under [Apache-2.0](LICENSE). See [contributor guidance](CONTRIBUTING.md).
+
 This directory is a small, public, polyglot project used to exercise Aegis Replay's
 portable test contract. It intentionally keeps each sample independent: the
 application code is tiny, the tests describe one stable behaviour, and every
@@ -24,6 +26,12 @@ only their standard toolchains. The Jest sample declares its reporter in
 Each test has a matching path and test name in the generated JUnit report. That
 stable attribution is the contract consumed by Aegis Replay; a target that
 cannot produce a report must be treated as invalid by the caller.
+
+## Generic lifecycle
+
+Linux CI runs `generic-command/run-acceptance.sh`: externally installed Aegis
+creates an antibody, proves known-bad/fixed/alternate-bad states, approves a
+recorded review fixture, then executes focused guard.
 
 ## Intentional mutation points
 
