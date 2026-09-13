@@ -28,7 +28,7 @@ jobs:
       - name: Prove and guard generic invariant
         run: ./generic-command/run-acceptance.sh
       - name: Run immutable reusable Aegis action
-        uses: samir-sayyed/aegis-replay@e1e2d5df3018c996de32b749d66ae618bb87df87
+        uses: samir-sayyed/aegis-replay@0522031a72939d6c8c4bbdcbeb052ce42ae82be9
         with:
           changed-paths: generic-command/state.txt
   macos:
