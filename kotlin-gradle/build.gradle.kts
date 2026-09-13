@@ -6,6 +6,10 @@ repositories {
     mavenCentral()
 }
 
+kotlin {
+    jvmToolchain(22)
+}
+
 dependencies {
     testImplementation(kotlin("test"))
 }

@@ -1,0 +1,23 @@
+name: POC portability
+on: [push, pull_request]
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '22'
+      - run: gradle test --no-daemon
+        working-directory: kotlin-gradle
+      - run: python -m pip install pytest && python -m pytest --junitxml=reports/junit.xml
+        working-directory: python-pytest
+      - run: npm ci && npm test
+        working-directory: typescript-jest
+  macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: ./run-tests.sh
+        working-directory: swift-xcode
