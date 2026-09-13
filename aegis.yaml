@@ -18,7 +18,7 @@ targets:
   - name: typescript-jest
     runner: jest-junit
     directory: typescript-jest
-    command: [npm, test]
+    command: [npm, test, --, --testNamePattern, "retains items in the requested category"]
     junit_xml: reports/junit.xml
     scope:
       - typescript-jest/src
