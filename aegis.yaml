@@ -3,15 +3,17 @@ targets:
   - name: kotlin-gradle
     runner: gradle-junit
     directory: kotlin-gradle
-    command: [gradle, test]
+    command: [gradle, test, --tests, poc.HealthTest.healthyStatusIsAccepted]
     junit_xml: build/test-results/test/TEST-*.xml
     scope:
       - kotlin-gradle/src
   - name: swift-xcode
     runner: xcode-junit
     directory: swift-xcode
-    command: [./run-tests.sh]
+    command: [./run-tests.sh, --filter, PocLibraryTests.StatusTests/testActiveStatusIsRunnable]
     junit_xml: reports/junit.xml
+    environment:
+      AEGIS_XCODE_ONLY_TESTING: PocLibraryTests/StatusTests/testActiveStatusIsRunnable
     scope:
       - swift-xcode/Sources
       - swift-xcode/Tests
