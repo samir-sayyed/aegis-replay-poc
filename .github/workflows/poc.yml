@@ -5,6 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -26,9 +29,12 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
       - run: ./run-tests.sh
         working-directory: swift-xcode
       - name: Install Aegis candidate
-        run: python3 -m pip install 'git+https://github.com/samir-sayyed/aegis-replay.git@f759a1f'
+        run: python -m pip install 'git+https://github.com/samir-sayyed/aegis-replay.git@f759a1f'
       - name: Verify Aegis Swift target
         run: aegis doctor --directory . --target swift-xcode
