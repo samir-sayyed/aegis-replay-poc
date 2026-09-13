@@ -1,5 +1,12 @@
 schema_version: 1
 targets:
+  - name: generic-command
+    runner: command-junit
+    directory: generic-command
+    command: [python, runner.py]
+    junit_xml: reports/junit.xml
+    scope:
+      - generic-command/state.txt
   - name: kotlin-gradle
     runner: gradle-junit
     directory: kotlin-gradle
@@ -28,7 +35,7 @@ targets:
   - name: python-pytest
     runner: pytest-junit
     directory: python-pytest
-    command: [python, -m, pytest, tests/test_greeting.py::test_greeting_preserves_input_case]
+    command: [python, -m, pytest, "tests/test_greeting.py::test_greeting_preserves_input_case"]
     junit_xml: reports/junit.xml
     scope:
       - python-pytest/src

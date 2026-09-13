@@ -19,12 +19,14 @@ jobs:
       - run: npm ci && npm test
         working-directory: typescript-jest
       - name: Install Aegis candidate
-        run: python -m pip install 'git+https://github.com/samir-sayyed/aegis-replay.git@f759a1f'
+        run: python -m pip install 'git+https://github.com/samir-sayyed/aegis-replay.git@aeab635'
       - name: Verify Aegis JVM, Python, and Jest targets
         run: |
           aegis doctor --directory . --target kotlin-gradle
           aegis doctor --directory . --target python-pytest
           aegis doctor --directory . --target typescript-jest
+      - name: Prove and guard generic invariant
+        run: ./generic-command/run-acceptance.sh
   macos:
     runs-on: macos-latest
     steps:
