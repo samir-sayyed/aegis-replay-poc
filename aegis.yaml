@@ -2,32 +2,32 @@ schema_version: 1
 targets:
   - name: kotlin-gradle
     runner: gradle-junit
-    directory: poc/kotlin-gradle
-    command: [./gradlew, test]
-    junit_xml: poc/kotlin-gradle/build/test-results/test
+    directory: kotlin-gradle
+    command: [gradle, test]
+    junit_xml: build/test-results/test/TEST-*.xml
     scope:
-      - poc/kotlin-gradle/src
+      - kotlin-gradle/src
   - name: swift-xcode
     runner: xcode-junit
-    directory: poc/swift-xcode
+    directory: swift-xcode
     command: [./run-tests.sh]
-    junit_xml: poc/swift-xcode/reports/junit.xml
+    junit_xml: reports/junit.xml
     scope:
-      - poc/swift-xcode/Sources
-      - poc/swift-xcode/Tests
+      - swift-xcode/Sources
+      - swift-xcode/Tests
   - name: typescript-jest
     runner: jest-junit
-    directory: poc/typescript-jest
+    directory: typescript-jest
     command: [npm, test]
-    junit_xml: poc/typescript-jest/reports/junit.xml
+    junit_xml: reports/junit.xml
     scope:
-      - poc/typescript-jest/src
-      - poc/typescript-jest/tests
+      - typescript-jest/src
+      - typescript-jest/tests
   - name: python-pytest
     runner: pytest-junit
-    directory: poc/python-pytest
+    directory: python-pytest
     command: [python, -m, pytest]
-    junit_xml: poc/python-pytest/reports/junit.xml
+    junit_xml: reports/junit.xml
     scope:
-      - poc/python-pytest/src
-      - poc/python-pytest/tests
+      - python-pytest/src
+      - python-pytest/tests
