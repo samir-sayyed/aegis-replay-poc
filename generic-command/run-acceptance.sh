@@ -5,6 +5,10 @@ known_bad="$(mktemp)"
 alternate_bad="$(mktemp)"
 trap 'rm -f "$known_bad" "$alternate_bad"' EXIT
 
+# CI target checks produce ignored reports and caches. Proof intentionally starts
+# from a clean tracked workspace, so remove only ignored generated outputs.
+git clean -fdX
+
 printf 'known-bad\n' > generic-command/state.txt
 git diff -- generic-command/state.txt > "$known_bad"
 printf 'alternate-bad\n' > generic-command/state.txt

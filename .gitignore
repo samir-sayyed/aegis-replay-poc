@@ -1,4 +1,6 @@
 **/.build/
+**/.gradle/
+**/.pytest_cache/
 **/build/
 **/node_modules/
 **/reports/*.xml
