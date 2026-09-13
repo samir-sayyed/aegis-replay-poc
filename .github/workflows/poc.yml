@@ -15,9 +15,20 @@ jobs:
         working-directory: python-pytest
       - run: npm ci && npm test
         working-directory: typescript-jest
+      - name: Install Aegis candidate
+        run: python -m pip install 'git+https://github.com/samir-sayyed/aegis-replay.git@f759a1f'
+      - name: Verify Aegis JVM, Python, and Jest targets
+        run: |
+          aegis doctor --directory . --target kotlin-gradle
+          aegis doctor --directory . --target python-pytest
+          aegis doctor --directory . --target typescript-jest
   macos:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
       - run: ./run-tests.sh
         working-directory: swift-xcode
+      - name: Install Aegis candidate
+        run: python3 -m pip install 'git+https://github.com/samir-sayyed/aegis-replay.git@f759a1f'
+      - name: Verify Aegis Swift target
+        run: aegis doctor --directory . --target swift-xcode
