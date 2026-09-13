@@ -27,6 +27,10 @@ jobs:
           aegis doctor --directory . --target typescript-jest
       - name: Prove and guard generic invariant
         run: ./generic-command/run-acceptance.sh
+      - name: Run immutable reusable Aegis action
+        uses: samir-sayyed/aegis-replay@e1e2d5df3018c996de32b749d66ae618bb87df87
+        with:
+          changed-paths: generic-command/state.txt
   macos:
     runs-on: macos-latest
     steps:
