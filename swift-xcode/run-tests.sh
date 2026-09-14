@@ -11,7 +11,23 @@ if command -v xcodebuild >/dev/null 2>&1 && [ -n "${AEGIS_XCODE_SCHEME:-}" ]; th
     echo "Xcode schemes need a configured result-to-JUnit reporter; SwiftPM POC uses native xUnit output." >&2
     exit 2
 elif command -v swift >/dev/null 2>&1; then
-    swift test --package-path "$root_dir" --xunit-output "$report_path" "$@"
+    log_path="$report_dir/swift-test.log"
+    if ! swift test --package-path "$root_dir" "$@" >"$log_path" 2>&1; then
+        cat "$log_path" >&2
+        exit 1
+    fi
+    cat "$log_path"
+    testcase_count=$(sed -n "s/.*Test Case '-\\[\\([^ ]*\\) \\([^]]*\\)\\]' passed.*/<testcase classname=\"\\1\" name=\"\\2\"\/>/p" "$log_path" | wc -l | tr -d ' ')
+    test "$testcase_count" -gt 0 || {
+        echo "Swift test output did not contain any passed XCTest cases." >&2
+        exit 2
+    }
+    {
+        printf '%s\\n' '<?xml version="1.0" encoding="UTF-8"?>'
+        printf '<testsuite name="SwiftPM" tests="%s" failures="0" errors="0" skipped="0">\\n' "$testcase_count"
+        sed -n "s/.*Test Case '-\\[\\([^ ]*\\) \\([^]]*\\)\\]' passed.*/  <testcase classname=\"\\1\" name=\"\\2\"\\/>/p" "$log_path"
+        printf '%s\\n' '</testsuite>'
+    } > "$report_path"
 else
     echo "Swift toolchain is required to run Swift POC tests." >&2
     exit 2
