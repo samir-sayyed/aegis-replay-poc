@@ -6,3 +6,4 @@
 **/reports/*.xml
 **/reports/*.log
 **/__pycache__/
+.aegis/*-review.json
