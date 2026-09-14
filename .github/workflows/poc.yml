@@ -27,6 +27,8 @@ jobs:
           aegis doctor --directory . --target typescript-jest
       - name: Prove and guard generic invariant
         run: ./generic-command/run-acceptance.sh
+      - name: Prove and guard Gradle invariant
+        run: ./kotlin-gradle/run-acceptance.sh
       - name: Prove and guard pytest invariant
         run: ./python-pytest/run-acceptance.sh
       - name: Prove and guard Jest invariant
