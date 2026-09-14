@@ -19,7 +19,7 @@ jobs:
         run: ./run-tests.sh
         working-directory: swift-xcode
       - name: Install Aegis candidate
-        run: python -m pip install 'git+https://github.com/samir-sayyed/aegis-replay.git@6a7f143fc7e5a29604fc34f4a45819352d1961a3'
+        run: python -m pip install 'git+https://github.com/samir-sayyed/aegis-replay.git@4d357506de76ce7d9a65bf509db15a7c5bc8849c'
       - name: Install POC test runner dependencies
         run: python -m pip install pytest
       - name: Verify Aegis Swift target
