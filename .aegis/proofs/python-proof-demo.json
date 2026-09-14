@@ -1,0 +1,21 @@
+{
+  "antibody_id": "python-proof-demo",
+  "inputs": {
+    "alternate_bad_mutation_sha256": "ea8072b80e8b119af6bf58b09aebbeb18f97396c0ca3861954030be35e9fe54f",
+    "configuration_sha256": "95b8e53add64beab92836eb09e1557d1612a6965c051ba4bcb3d3401d0a67b97",
+    "execution_sha256": "05c1590d42f663b6881540add8476297d22c6f94ca29f3316bf7ca1285bb466f",
+    "known_bad_mutation_sha256": "11ff6003ac16bb7c75855ee5907c0ff2a468e3cfb82b151212f4ceee486dd5cc",
+    "parser_sha256": "bb08d20f5842dac15229c088c59bb815898d5a3cff8a7591ce03fdd6f7dde915",
+    "schema_sha256": "e8a18291856fc7293364adbd6827d3a2f71512ba0682b4e0977db7c6aa8d3993",
+    "source_sha256": "cf45fdfef0868936ba799c71e1c6a45fe319f6c006e7d65f9762b31d546a3ba6",
+    "tests_sha256": "d2fd1e4c59aed35c536096adc076978ed759e31ab7fc5acf7f7ff8dcd2c6445d"
+  },
+  "schema_version": 1,
+  "source_revision": "e3fd147e7aadd8a672d2fa73d507421fbed275ab",
+  "state": "proved",
+  "states": {
+    "alternate_bad": "target-failed",
+    "fixed": "target-and-control-passed",
+    "known_bad": "target-failed"
+  }
+}

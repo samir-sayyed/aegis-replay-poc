@@ -1,0 +1,10 @@
+diff --git a/python-pytest/src/poc/greeting.py b/python-pytest/src/poc/greeting.py
+index 43c2026..5820c88 100644
+--- a/python-pytest/src/poc/greeting.py
++++ b/python-pytest/src/poc/greeting.py
+@@ -2,4 +2,4 @@ def greeting(name: str) -> str:
+     """Create a greeting without changing the caller's input."""
+     if not name:
+         raise ValueError("name must not be empty")
+-    return f"Hello, {name}!"
++    return f"Broken, {name}!"
