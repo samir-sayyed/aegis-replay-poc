@@ -18,14 +18,14 @@ if [ ! -f .aegis/antibodies/gradle-proof-demo.json ]; then
     --directory . \
     --invariant 'Only healthy status is accepted.' \
     --target kotlin-gradle \
-    --test 'poc.HealthTest#healthyStatusIsAccepted' \
+    --test 'poc.HealthTest#healthyStatusIsAccepted()' \
     --scope kotlin-gradle/src \
     --proof-input source_revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
   git add .aegis/antibodies
   git -c user.email=poc@example.invalid -c user.name='Aegis POC' commit -m 'record Gradle POC antibody'
 fi
 
-aegis prove gradle-proof-demo --directory . --known-bad "$known_bad" --alternate-bad "$alternate_bad" --control 'poc.HealthTest#otherStatusesAreRejected'
+aegis prove gradle-proof-demo --directory . --known-bad "$known_bad" --alternate-bad "$alternate_bad" --control 'poc.HealthTest#otherStatusesAreRejected()'
 python - <<'PY'
 import json
 from pathlib import Path

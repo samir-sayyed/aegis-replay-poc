@@ -13,7 +13,7 @@
   "tests": [
     {
       "class": "poc.HealthTest",
-      "name": "healthyStatusIsAccepted"
+      "name": "healthyStatusIsAccepted()"
     }
   ]
 }
