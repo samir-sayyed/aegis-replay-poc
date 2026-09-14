@@ -1,0 +1,19 @@
+{
+  "id": "jest-proof-demo",
+  "invariant": "Category filtering retains matching item.",
+  "proof_inputs": {
+    "source_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "schema_version": 1,
+  "scope": [
+    "typescript-jest/src"
+  ],
+  "state": "draft",
+  "target": "typescript-jest",
+  "tests": [
+    {
+      "class": "byCategory retains items in the requested category",
+      "name": "byCategory retains items in the requested category"
+    }
+  ]
+}
