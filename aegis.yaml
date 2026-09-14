@@ -11,6 +11,7 @@ targets:
     runner: gradle-junit
     directory: kotlin-gradle
     command: [gradle, test, --tests, poc.HealthTest.healthyStatusIsAccepted]
+    proof_command: [gradle, test, --no-daemon]
     junit_xml: build/test-results/test/TEST-*.xml
     scope:
       - kotlin-gradle/src
