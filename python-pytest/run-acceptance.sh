@@ -13,15 +13,17 @@ rm python-pytest/src/poc/greeting.py.bak
 git diff -- python-pytest/src/poc/greeting.py > "$alternate_bad"
 git checkout -- python-pytest/src/poc/greeting.py
 
-aegis antibody create python-proof-demo \
+if [ ! -f .aegis/antibodies/python-proof-demo.json ]; then
+  aegis antibody create python-proof-demo \
   --directory . \
   --invariant 'Greeting preserves caller input case.' \
   --target python-pytest \
   --test 'tests.test_greeting#test_greeting_preserves_input_case' \
   --scope python-pytest/src \
-  --proof-input source_revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-git add .aegis/antibodies
-git -c user.email=poc@example.invalid -c user.name='Aegis POC' commit -m 'record pytest POC antibody'
+    --proof-input source_revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  git add .aegis/antibodies
+  git -c user.email=poc@example.invalid -c user.name='Aegis POC' commit -m 'record pytest POC antibody'
+fi
 
 aegis prove python-proof-demo --directory . --known-bad "$known_bad" --alternate-bad "$alternate_bad" --control 'tests.test_greeting#test_greeting_rejects_empty_name'
 python - <<'PY'
@@ -34,3 +36,5 @@ Path(".aegis/python-review.json").write_text(json.dumps({"pull_request": {"head"
 PY
 aegis approve python-proof-demo --directory . --github-fixture .aegis/python-review.json --required-owner poc-owner
 aegis guard --directory . --changed python-pytest/src/poc/greeting.py
+git add .aegis/approvals .aegis/proofs .aegis/proof-inputs
+git diff --cached --quiet || git -c user.email=poc@example.invalid -c user.name='Aegis POC' commit -m 'prove pytest POC invariant'

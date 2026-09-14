@@ -13,15 +13,17 @@ rm typescript-jest/src/filter.ts.bak
 git diff -- typescript-jest/src/filter.ts > "$alternate_bad"
 git checkout -- typescript-jest/src/filter.ts
 
-aegis antibody create jest-proof-demo \
+if [ ! -f .aegis/antibodies/jest-proof-demo.json ]; then
+  aegis antibody create jest-proof-demo \
   --directory . \
   --invariant 'Category filtering retains matching item.' \
   --target typescript-jest \
   --test 'byCategory retains items in the requested category#byCategory retains items in the requested category' \
   --scope typescript-jest/src \
-  --proof-input source_revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-git add .aegis/antibodies
-git -c user.email=poc@example.invalid -c user.name='Aegis POC' commit -m 'record Jest POC antibody'
+    --proof-input source_revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  git add .aegis/antibodies
+  git -c user.email=poc@example.invalid -c user.name='Aegis POC' commit -m 'record Jest POC antibody'
+fi
 
 aegis prove jest-proof-demo --directory . --known-bad "$known_bad" --alternate-bad "$alternate_bad" --control 'byCategory returns an empty list when category is unknown#byCategory returns an empty list when category is unknown'
 python - <<'PY'
@@ -34,3 +36,5 @@ Path(".aegis/jest-review.json").write_text(json.dumps({"pull_request": {"head": 
 PY
 aegis approve jest-proof-demo --directory . --github-fixture .aegis/jest-review.json --required-owner poc-owner
 aegis guard --directory . --changed typescript-jest/src/filter.ts
+git add .aegis/approvals .aegis/proofs .aegis/proof-inputs
+git diff --cached --quiet || git -c user.email=poc@example.invalid -c user.name='Aegis POC' commit -m 'prove Jest POC invariant'

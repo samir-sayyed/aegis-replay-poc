@@ -29,3 +29,5 @@ aegis prove generic-proof-demo --directory . --known-bad "$known_bad" --alternat
 python generic-command/write_fixture.py
 aegis approve generic-proof-demo --directory . --github-fixture .aegis/generic-review.json --required-owner poc-owner
 aegis guard --directory . --changed generic-command/state.txt
+git add .aegis/approvals .aegis/proofs .aegis/proof-inputs
+git diff --cached --quiet || git -c user.email=poc@example.invalid -c user.name='Aegis POC' commit -m 'prove generic POC invariant'

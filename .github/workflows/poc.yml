@@ -29,6 +29,8 @@ jobs:
         run: ./generic-command/run-acceptance.sh
       - name: Prove and guard pytest invariant
         run: ./python-pytest/run-acceptance.sh
+      - name: Prove and guard Jest invariant
+        run: ./typescript-jest/run-acceptance.sh
       - name: Run immutable reusable Aegis action
         uses: samir-sayyed/aegis-replay@0522031a72939d6c8c4bbdcbeb052ce42ae82be9
         with:
