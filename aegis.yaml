@@ -41,6 +41,8 @@ targets:
     command: [python, -m, pytest, "tests/test_greeting.py::test_greeting_preserves_input_case"]
     proof_command: [python, -m, pytest, tests/test_greeting.py]
     junit_xml: reports/junit.xml
+    environment:
+      PYTHONDONTWRITEBYTECODE: "1"
     scope:
       - python-pytest/src
       - python-pytest/tests
