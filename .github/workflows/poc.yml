@@ -19,7 +19,7 @@ jobs:
       - run: npm ci && npm test
         working-directory: typescript-jest
       - name: Install Aegis candidate
-        run: python -m pip install 'git+https://github.com/samir-sayyed/aegis-replay.git@aeab635'
+        run: python -m pip install 'git+https://github.com/samir-sayyed/aegis-replay.git@64b260c'
       - name: Verify Aegis JVM, Python, and Jest targets
         run: |
           aegis doctor --directory . --target kotlin-gradle
@@ -27,6 +27,8 @@ jobs:
           aegis doctor --directory . --target typescript-jest
       - name: Prove and guard generic invariant
         run: ./generic-command/run-acceptance.sh
+      - name: Prove and guard pytest invariant
+        run: ./python-pytest/run-acceptance.sh
       - name: Run immutable reusable Aegis action
         uses: samir-sayyed/aegis-replay@0522031a72939d6c8c4bbdcbeb052ce42ae82be9
         with:
