@@ -6,6 +6,7 @@ for antibody in gradle-proof-demo jest-proof-demo python-proof-demo swift-proof-
   aegis jira capture --directory . --key POC-42 --jira-fixture .aegis/fixtures/jira/POC-42.json --antibody "$antibody" >/dev/null
 done
 ! grep -Eq 'public-fixture-token|ignored by capture' .aegis/jira/POC-42.json
+selection_started=$SECONDS
 
 run_selection() {
   local changed="$1"
@@ -29,3 +30,7 @@ run_selection typescript-jest/src/filter.ts .aegis/fixtures/semantic/additive.js
 run_selection swift-xcode/Sources/PocLibrary/Status.swift .aegis/fixtures/semantic/uncertain.json true
 # Invalid recorded model response also fails safely to all candidates.
 run_selection kotlin-gradle/src/main/kotlin/poc/Health.kt .aegis/fixtures/semantic/invalid.json true
+
+selection_seconds=$((SECONDS - selection_started))
+test "$selection_seconds" -lt 15
+printf 'Recorded semantic selection: %ss; live model cost: $0.00\n' "$selection_seconds"
