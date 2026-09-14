@@ -19,7 +19,7 @@ jobs:
         run: ./run-tests.sh
         working-directory: swift-xcode
       - name: Install Aegis candidate
-        run: python -m pip install 'git+https://github.com/samir-sayyed/aegis-replay.git@6570201'
+        run: python -m pip install 'git+https://github.com/samir-sayyed/aegis-replay.git@4c60dc6'
       - name: Verify Aegis Swift target
         run: aegis doctor --directory . --target swift-xcode
       - name: Prove and guard Swift invariant
