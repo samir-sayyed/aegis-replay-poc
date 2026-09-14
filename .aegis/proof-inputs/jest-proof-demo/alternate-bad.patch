@@ -1,11 +1,11 @@
 diff --git a/typescript-jest/src/filter.ts b/typescript-jest/src/filter.ts
-index fe10215..ab68aac 100644
+index adbbf10..26eb173 100644
 --- a/typescript-jest/src/filter.ts
 +++ b/typescript-jest/src/filter.ts
-@@ -1,5 +1,5 @@
- export type Item = { name: string; category: string };
+@@ -2,5 +2,5 @@ export type Visibility = "public" | "internal";
+ export type Item = { name: string; category: string; visibility: Visibility };
  
  export function byCategory(items: Item[], category: string): Item[] {
--  return items.filter((item) => item.category === category);
-+  return items.slice(0, 0);// return items.filter((item) => item.category === category);
+-  return items.filter((item) => item.category === category && item.visibility === "public");
++  return items.filter((item) => item.visibility === "public");
  }

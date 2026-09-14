@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "antibody_id": "jest-proof-demo",
-  "head_sha": "9bea5a0bf499e05f98497ad235d6dd1f848bf40c",
-  "proof_sha256": "3d68c7adad73daed232b17bb36152a5e4a5831a65a69a02d5eabed6d535c5ea6",
+  "head_sha": "9689c1524df379cb0d3f51b0ba1c6395fcbd0079",
+  "proof_sha256": "f5718f7ed830b16b81c517a5c191ae486cce13c42e00f38ac574d45bbc9a68f4",
   "reviewers": [
     "poc-owner"
   ]

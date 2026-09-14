@@ -1,18 +1,18 @@
 {
   "antibody_id": "jest-proof-demo",
   "inputs": {
-    "alternate_bad_mutation_sha256": "2bb8b3701d3f0c8e3ed7148a31df0c1479b251d843b08b993fc0a585c72c27a6",
-    "configuration_sha256": "fb6987f9b5215329371081720bdddd819efcea93ae11d96415cff971e5bfc64a",
-    "execution_sha256": "8c3988b823d149e2a33c55958c744d0513ab85a61bf63239f540e5519d9029dc",
-    "known_bad_mutation_sha256": "7a8505aee72f2f80129dde1f6b17f78fcf8cb527f3816315e2e9b511b947cafd",
-    "parser_sha256": "11c69f0df9a34db78693b969352b47fa4ae372a9e90cb169ac32e8fda641354d",
+    "alternate_bad_mutation_sha256": "9d4134c5a39f0c2a503a1fa549a8f7c70e2c2718fc4a986b89fa4558f72126e0",
+    "configuration_sha256": "b188344e46197033aac0cabec0194429722fe6244b7ade5a463de6362f0a5733",
+    "execution_sha256": "cdf179ca17e9ab6c5f7d14c0b748b0be6da88340472f3336760480faf459d908",
+    "known_bad_mutation_sha256": "2ef3192924a4ef7be574e31591710cbb2e069ba3c122ba4f60d970617f0a1b2a",
+    "parser_sha256": "539b6f89e23fa61a9154d7a598a437ce817c51d69bfcd8f6c2463674cfb9cab5",
     "schema_sha256": "e8a18291856fc7293364adbd6827d3a2f71512ba0682b4e0977db7c6aa8d3993",
-    "source_sha256": "704d08f5c6f9a11c1e53b116e4adf04c8a4f90ae3e0d66f621ccefd8c78448bc",
-    "tests_sha256": "85c154f6b3ea68546507d5e792db821114ff67c636b0855fe7309d5d6beccc24"
+    "source_sha256": "4c3ae085b53399c7196dc3a384f268db587dace1437789d1cf88df493f23f062",
+    "tests_sha256": "19a790af4250e59efa45e0121a321bc91954f91293c931b39947b368f736f39a"
   },
   "schema_version": 1,
-  "source_commit": "9bea5a0bf499e05f98497ad235d6dd1f848bf40c",
-  "source_revision": "704d08f5c6f9a11c1e53b116e4adf04c8a4f90ae3e0d66f621ccefd8c78448bc",
+  "source_commit": "9689c1524df379cb0d3f51b0ba1c6395fcbd0079",
+  "source_revision": "4c3ae085b53399c7196dc3a384f268db587dace1437789d1cf88df493f23f062",
   "state": "proved",
   "states": {
     "alternate_bad": "target-failed",
