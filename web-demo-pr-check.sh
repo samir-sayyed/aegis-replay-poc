@@ -2,7 +2,7 @@
 set -euo pipefail
 
 base_ref="${GITHUB_BASE_REF:-main}"
-git fetch origin "$base_ref" --depth=1
+git fetch origin "+refs/heads/$base_ref:refs/remotes/origin/$base_ref"
 changed=()
 while IFS= read -r path; do
   [ -n "$path" ] && changed+=("$path")
