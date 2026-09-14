@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Config change selects every approved antibody in one guard request. Guard
-# creates one adapter batch per target and attributes exact JUnit identities.
+# One guard request selects four portable target scopes. Guard creates one
+# adapter batch per target and attributes exact JUnit identities.
 set +e
-output="$(aegis guard --directory . --changed aegis.yaml)"
+output="$(aegis guard --directory . \
+  --changed kotlin-gradle/src \
+  --changed swift-xcode/Sources \
+  --changed typescript-jest/src \
+  --changed python-pytest/src)"
 status=$?
 set -e
 printf '%s\n' "$output"
