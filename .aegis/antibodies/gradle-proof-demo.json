@@ -1,0 +1,19 @@
+{
+  "id": "gradle-proof-demo",
+  "invariant": "Only healthy status is accepted.",
+  "proof_inputs": {
+    "source_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "schema_version": 1,
+  "scope": [
+    "kotlin-gradle/src"
+  ],
+  "state": "draft",
+  "target": "kotlin-gradle",
+  "tests": [
+    {
+      "class": "poc.HealthTest",
+      "name": "healthyStatusIsAccepted"
+    }
+  ]
+}
