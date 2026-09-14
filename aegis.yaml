@@ -19,6 +19,7 @@ targets:
     runner: xcode-junit
     directory: swift-xcode
     command: [./run-tests.sh, --filter, PocLibraryTests.StatusTests/testActiveStatusIsRunnable]
+    proof_command: [./run-tests.sh]
     junit_xml: reports/junit.xml
     environment:
       AEGIS_XCODE_ONLY_TESTING: PocLibraryTests/StatusTests/testActiveStatusIsRunnable
