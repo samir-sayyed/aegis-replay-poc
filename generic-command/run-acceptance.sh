@@ -5,6 +5,10 @@ known_bad="$(mktemp)"
 alternate_bad="$(mktemp)"
 trap 'rm -f "$known_bad" "$alternate_bad"' EXIT
 
+if [ "${CI:-}" = "true" ]; then
+  git clean -fdX -e typescript-jest/node_modules/
+fi
+
 printf 'known-bad\n' > generic-command/state.txt
 git diff -- generic-command/state.txt > "$known_bad"
 printf 'alternate-bad\n' > generic-command/state.txt
