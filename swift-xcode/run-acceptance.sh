@@ -38,6 +38,7 @@ source = proof['source_commit']
 Path('.aegis/swift-review.json').write_text(json.dumps({'pull_request': {'head': {'sha': source}}, 'reviews': [{'user': {'login': 'poc-owner'}, 'state': 'APPROVED', 'dismissed_at': None, 'commit_id': source}]}))
 PY
 aegis approve swift-proof-demo --directory . --github-fixture .aegis/swift-review.json --required-owner poc-owner
+aegis antibody explain swift-proof-demo --directory .
 aegis guard --directory . --changed swift-xcode/Sources/PocLibrary/Status.swift
 git add .aegis/approvals .aegis/proofs .aegis/proof-inputs
 git diff --cached --quiet || git -c user.email=poc@example.invalid -c user.name='Aegis POC' commit -m 'prove Swift POC invariant'
