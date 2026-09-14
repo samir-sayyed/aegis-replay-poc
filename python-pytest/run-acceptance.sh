@@ -35,6 +35,7 @@ head = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
 Path(".aegis/python-review.json").write_text(json.dumps({"pull_request": {"head": {"sha": head}}, "reviews": [{"user": {"login": "poc-owner"}, "state": "APPROVED", "dismissed_at": None, "commit_id": head}]}))
 PY
 aegis approve python-proof-demo --directory . --github-fixture .aegis/python-review.json --required-owner poc-owner
+git checkout -- .aegis/python-review.json
 aegis guard --directory . --changed python-pytest/src/poc/greeting.py
 git add .aegis/approvals .aegis/proofs .aegis/proof-inputs
 git diff --cached --quiet || git -c user.email=poc@example.invalid -c user.name='Aegis POC' commit -m 'prove pytest POC invariant'

@@ -8,6 +8,13 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.11'
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '22'
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
       - name: Run SwiftPM tests and create genuine xUnit report
         run: ./run-tests.sh
         working-directory: swift-xcode
@@ -17,6 +24,12 @@ jobs:
         run: aegis doctor --directory . --target swift-xcode
       - name: Prove and guard Swift invariant
         run: ./swift-xcode/run-acceptance.sh
+      - name: Prove and guard Gradle invariant
+        run: ./kotlin-gradle/run-acceptance.sh
+      - name: Prove and guard pytest invariant
+        run: ./python-pytest/run-acceptance.sh
+      - name: Prove and guard Jest invariant
+        run: ./typescript-jest/run-acceptance.sh
       - name: Validate recorded cross-stack semantic selection
         run: ./semantic-acceptance.sh
       - name: Reject stale protected source and Jira evidence

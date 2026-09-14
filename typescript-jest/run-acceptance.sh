@@ -35,6 +35,7 @@ source = proof["source_commit"]
 Path(".aegis/jest-review.json").write_text(json.dumps({"pull_request": {"head": {"sha": source}}, "reviews": [{"user": {"login": "poc-owner"}, "state": "APPROVED", "dismissed_at": None, "commit_id": source}]}))
 PY
 aegis approve jest-proof-demo --directory . --github-fixture .aegis/jest-review.json --required-owner poc-owner
+git checkout -- .aegis/jest-review.json
 aegis guard --directory . --changed typescript-jest/src/filter.ts
 git add .aegis/approvals .aegis/proofs .aegis/proof-inputs
 git diff --cached --quiet || git -c user.email=poc@example.invalid -c user.name='Aegis POC' commit -m 'prove Jest POC invariant'
