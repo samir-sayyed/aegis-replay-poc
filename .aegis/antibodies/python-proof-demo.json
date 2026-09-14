@@ -1,0 +1,19 @@
+{
+  "id": "python-proof-demo",
+  "invariant": "Greeting preserves caller input case.",
+  "proof_inputs": {
+    "source_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "schema_version": 1,
+  "scope": [
+    "python-pytest/src"
+  ],
+  "state": "draft",
+  "target": "python-pytest",
+  "tests": [
+    {
+      "class": "tests.test_greeting",
+      "name": "test_greeting_preserves_input_case"
+    }
+  ]
+}
