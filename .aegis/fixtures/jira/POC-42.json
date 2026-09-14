@@ -1,0 +1,11 @@
+{
+  "key": "POC-42",
+  "fields": {
+    "summary": "Preserve active status behavior across clients",
+    "description": "A moved status implementation must keep active items runnable. token=public-fixture-token",
+    "issuetype": {"name": "Bug"},
+    "labels": ["portability", "regression"],
+    "components": [{"name": "shared-status"}],
+    "comment": {"comments": ["ignored by capture"]}
+  }
+}

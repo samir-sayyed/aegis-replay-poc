@@ -2,6 +2,10 @@
 set -euo pipefail
 
 commit="$(git rev-parse HEAD)"
+for antibody in gradle-proof-demo jest-proof-demo python-proof-demo swift-proof-demo; do
+  aegis jira capture --directory . --key POC-42 --jira-fixture .aegis/fixtures/jira/POC-42.json --antibody "$antibody" >/dev/null
+done
+
 run_selection() {
   local changed="$1"
   local fixture="$2"
