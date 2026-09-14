@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "antibody_id": "python-proof-demo",
-  "head_sha": "e3fd147e7aadd8a672d2fa73d507421fbed275ab",
-  "proof_sha256": "7e95afe44646e17520d686a627f68ea07e4dbb8d646cabcf9d1dd18dda6eca5f",
+  "head_sha": "07589dd9f5b2ee827f72be3551dbc512ac39eaef",
+  "proof_sha256": "17a1647ed4f4bd808421cd23ecebdaa8686f453fdaf6bc12cee20c3556f3eec7",
   "reviewers": [
     "poc-owner"
   ]

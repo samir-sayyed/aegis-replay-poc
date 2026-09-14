@@ -5,12 +5,13 @@
     "configuration_sha256": "95b8e53add64beab92836eb09e1557d1612a6965c051ba4bcb3d3401d0a67b97",
     "execution_sha256": "05c1590d42f663b6881540add8476297d22c6f94ca29f3316bf7ca1285bb466f",
     "known_bad_mutation_sha256": "11ff6003ac16bb7c75855ee5907c0ff2a468e3cfb82b151212f4ceee486dd5cc",
-    "parser_sha256": "1707eff8502c9506f74aa2c1464444b523deab6de5ef74bd264fa751c3610513",
+    "parser_sha256": "11c69f0df9a34db78693b969352b47fa4ae372a9e90cb169ac32e8fda641354d",
     "schema_sha256": "e8a18291856fc7293364adbd6827d3a2f71512ba0682b4e0977db7c6aa8d3993",
     "source_sha256": "8c16190e42f5422f349da63c58b50a649276382d5549feaffcb63371f3b9c1b8",
     "tests_sha256": "d2fd1e4c59aed35c536096adc076978ed759e31ab7fc5acf7f7ff8dcd2c6445d"
   },
   "schema_version": 1,
+  "source_commit": "07589dd9f5b2ee827f72be3551dbc512ac39eaef",
   "source_revision": "8c16190e42f5422f349da63c58b50a649276382d5549feaffcb63371f3b9c1b8",
   "state": "proved",
   "states": {
