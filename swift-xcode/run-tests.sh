@@ -17,6 +17,11 @@ else
     exit 2
 fi
 
+for _ in $(seq 1 20); do
+    test -s "$report_path" && exit 0
+    sleep 0.1
+done
+
 test -s "$report_path" || {
     echo "Swift test run completed without native xUnit report: $report_path" >&2
     exit 2
