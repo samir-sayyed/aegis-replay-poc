@@ -19,7 +19,7 @@ jobs:
       - run: npm ci && npm test
         working-directory: typescript-jest
       - name: Install Aegis candidate
-        run: python -m pip install 'git+https://github.com/samir-sayyed/aegis-replay.git@64b260c'
+        run: python -m pip install 'git+https://github.com/samir-sayyed/aegis-replay.git@ae6a624f305455334cdcf5c212aead5aa14e29c7'
       - name: Verify Aegis JVM, Python, and Jest targets
         run: |
           aegis doctor --directory . --target kotlin-gradle
