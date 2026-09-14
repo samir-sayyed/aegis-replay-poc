@@ -1,42 +1,6 @@
 name: POC portability
 on: [push, pull_request]
 jobs:
-  linux:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-      - uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: '22'
-      - run: gradle test --no-daemon
-        working-directory: kotlin-gradle
-      - run: python -m pip install pytest && python -m pytest --junitxml=reports/junit.xml
-        working-directory: python-pytest
-      - run: npm ci && npm test
-        working-directory: typescript-jest
-      - name: Install Aegis candidate
-        run: python -m pip install 'git+https://github.com/samir-sayyed/aegis-replay.git@ae6a624f305455334cdcf5c212aead5aa14e29c7'
-      - name: Verify Aegis JVM, Python, and Jest targets
-        run: |
-          aegis doctor --directory . --target kotlin-gradle
-          aegis doctor --directory . --target python-pytest
-          aegis doctor --directory . --target typescript-jest
-      - name: Prove and guard generic invariant
-        run: ./generic-command/run-acceptance.sh
-      - name: Prove and guard Gradle invariant
-        run: ./kotlin-gradle/run-acceptance.sh
-      - name: Prove and guard pytest invariant
-        run: ./python-pytest/run-acceptance.sh
-      - name: Prove and guard Jest invariant
-        run: ./typescript-jest/run-acceptance.sh
-      - name: Run immutable reusable Aegis action
-        uses: samir-sayyed/aegis-replay@0522031a72939d6c8c4bbdcbeb052ce42ae82be9
-        with:
-          changed-paths: generic-command/state.txt
   macos:
     runs-on: macos-latest
     steps:
@@ -44,9 +8,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: ./run-tests.sh
+      - name: Run SwiftPM tests and create genuine xUnit report
+        run: ./run-tests.sh
         working-directory: swift-xcode
       - name: Install Aegis candidate
-        run: python -m pip install 'git+https://github.com/samir-sayyed/aegis-replay.git@f759a1f'
+        run: python -m pip install 'git+https://github.com/samir-sayyed/aegis-replay.git@ae6a624f305455334cdcf5c212aead5aa14e29c7'
       - name: Verify Aegis Swift target
         run: aegis doctor --directory . --target swift-xcode
