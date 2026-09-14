@@ -5,7 +5,7 @@ commit="$(git rev-parse HEAD)"
 for antibody in gradle-proof-demo jest-proof-demo python-proof-demo swift-proof-demo; do
   aegis jira capture --directory . --key POC-42 --jira-fixture .aegis/fixtures/jira/POC-42.json --antibody "$antibody" >/dev/null
 done
-! rg -q 'public-fixture-token|ignored by capture' .aegis/jira/POC-42.json
+! grep -Eq 'public-fixture-token|ignored by capture' .aegis/jira/POC-42.json
 
 run_selection() {
   local changed="$1"

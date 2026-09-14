@@ -8,7 +8,7 @@ expect_invalid() {
   local status=$?
   set -e
   test "$status" -ne 0
-  printf '%s\n' "$output" | rg -q 'Aegis guard: invalid'
+  printf '%s\n' "$output" | grep -q 'Aegis guard: invalid'
 }
 
 source_file=swift-xcode/Sources/PocLibrary/Status.swift
