@@ -28,7 +28,7 @@ targets:
     runner: jest-junit
     directory: typescript-jest
     command: [npm, test, --, --testNamePattern, "retains items in the requested category"]
-    proof_command: [npm, test, --, --runInBand]
+    proof_command: [./run-proof.sh]
     junit_xml: reports/junit.xml
     scope:
       - typescript-jest/src
