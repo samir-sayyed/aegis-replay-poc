@@ -26,6 +26,8 @@ if [ ! -f .aegis/antibodies/swift-proof-demo.json ]; then
 fi
 
 aegis jira capture --directory . --key POC-42 --jira-fixture .aegis/fixtures/jira/POC-42.json --antibody swift-proof-demo >/dev/null
+git add .aegis/jira .aegis/jira-links
+git diff --cached --quiet || git -c user.email=poc@example.invalid -c user.name='Aegis POC' commit -m 'link Swift POC intent'
 aegis prove swift-proof-demo --directory . --known-bad "$known_bad" --alternate-bad "$alternate_bad" --control 'PocLibraryTests.StatusTests#testPausedStatusIsNotRunnable'
 python - <<'PY'
 import json
