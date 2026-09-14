@@ -19,14 +19,14 @@ if [ ! -f .aegis/antibodies/jest-proof-demo.json ]; then
   --directory . \
   --invariant 'Public catalog filtering never exposes internal products.' \
   --target typescript-jest \
-  --test 'public product catalog#never exposes internal products in a public category' \
+  --test 'public product catalog never exposes internal products in a public category#public product catalog never exposes internal products in a public category' \
   --scope typescript-jest/src \
     --proof-input source_revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
   git add .aegis/antibodies
   git -c user.email=poc@example.invalid -c user.name='Aegis POC' commit -m 'record Jest POC antibody'
 fi
 
-aegis prove jest-proof-demo --directory . --known-bad "$known_bad" --alternate-bad "$alternate_bad" --control 'public product catalog#returns an empty list when category is unknown'
+aegis prove jest-proof-demo --directory . --known-bad "$known_bad" --alternate-bad "$alternate_bad" --control 'public product catalog returns an empty list when category is unknown#public product catalog returns an empty list when category is unknown'
 python - <<'PY'
 import json
 from pathlib import Path

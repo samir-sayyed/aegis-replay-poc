@@ -12,8 +12,8 @@
   "target": "typescript-jest",
   "tests": [
     {
-      "class": "public product catalog",
-      "name": "never exposes internal products in a public category"
+      "class": "public product catalog never exposes internal products in a public category",
+      "name": "public product catalog never exposes internal products in a public category"
     }
   ]
 }
