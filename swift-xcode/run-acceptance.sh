@@ -38,6 +38,17 @@ source = proof['source_commit']
 Path('.aegis/swift-review.json').write_text(json.dumps({'pull_request': {'head': {'sha': source}}, 'reviews': [{'user': {'login': 'poc-owner'}, 'state': 'APPROVED', 'dismissed_at': None, 'commit_id': source}]}))
 PY
 aegis approve swift-proof-demo --directory . --github-fixture .aegis/swift-review.json --required-owner poc-owner
+python - <<'PY'
+import hashlib
+import json
+from pathlib import Path
+
+proof = Path('.aegis/proofs/swift-proof-demo.json')
+approval = json.loads(Path('.aegis/approvals/swift-proof-demo.json').read_text())
+actual = hashlib.sha256(proof.read_bytes()).hexdigest()
+print(f"Swift approval hash matches proof: {approval['proof_sha256'] == actual}")
+assert approval['proof_sha256'] == actual
+PY
 aegis antibody explain swift-proof-demo --directory .
 aegis guard --directory . --changed swift-xcode/Sources/PocLibrary/Status.swift
 git add .aegis/approvals .aegis/proofs .aegis/proof-inputs
