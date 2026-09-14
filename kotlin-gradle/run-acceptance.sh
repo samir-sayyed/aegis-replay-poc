@@ -35,7 +35,7 @@ source = proof["source_commit"]
 Path(".aegis/gradle-review.json").write_text(json.dumps({"pull_request": {"head": {"sha": source}}, "reviews": [{"user": {"login": "poc-owner"}, "state": "APPROVED", "dismissed_at": None, "commit_id": source}]}))
 PY
 aegis approve gradle-proof-demo --directory . --github-fixture .aegis/gradle-review.json --required-owner poc-owner
-git checkout -- .aegis/gradle-review.json
+git checkout -- .aegis/gradle-review.json 2>/dev/null || rm -f .aegis/gradle-review.json
 aegis guard --directory . --changed kotlin-gradle/src/main/kotlin/poc/Health.kt
 git add .aegis/approvals .aegis/proofs .aegis/proof-inputs
 git diff --cached --quiet || git -c user.email=poc@example.invalid -c user.name='Aegis POC' commit -m 'prove Gradle POC invariant'
