@@ -1,0 +1,10 @@
+{
+  "id": "swift-proof-demo",
+  "invariant": "Only active Swift status is runnable.",
+  "proof_inputs": {"source_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"},
+  "schema_version": 1,
+  "scope": ["swift-xcode/Sources"],
+  "state": "draft",
+  "target": "swift-xcode",
+  "tests": [{"class": "PocLibraryTests.StatusTests", "name": "testActiveStatusIsRunnable"}]
+}
