@@ -1,12 +1,13 @@
 import { byCategory, Item } from "../src/filter";
 
-describe("byCategory", () => {
+describe("public product catalog", () => {
   const items: Item[] = [
-    { name: "alarm", category: "audio" },
-    { name: "calendar", category: "productivity" }
+    { name: "wireless headphones", category: "audio", visibility: "public" },
+    { name: "support escalation dashboard", category: "audio", visibility: "internal" },
+    { name: "weekly planner", category: "productivity", visibility: "public" }
   ];
 
-  it("retains items in the requested category", () => {
+  it("never exposes internal products in a public category", () => {
     expect(byCategory(items, "audio")).toEqual([items[0]]);
   });
 

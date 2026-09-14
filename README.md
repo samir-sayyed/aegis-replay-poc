@@ -10,6 +10,24 @@ target writes a JUnit XML report at the path declared in `../aegis.yaml`.
 The samples are deliberately boring. Their job is to prove that Aegis can select
 and run tests across different ecosystems, not to model a production application.
 
+## Five-minute web demo
+
+Use `typescript-jest/` for a lightweight judge demonstration. It models a public
+product catalog containing one internal support dashboard. The protected rule is:
+**a public category view must never expose internal products**.
+
+The Jest acceptance script creates two isolated regressions: one drops visibility
+filtering and leaks the dashboard; another ignores category filtering. Aegis proves
+both fail, verifies fixed and control cases pass, records reviewer approval, then
+replays only this focused web test when `typescript-jest/src/filter.ts` changes.
+
+```bash
+cd typescript-jest && npm ci && npm test
+cd ..
+./typescript-jest/run-acceptance.sh
+aegis guard --directory . --changed typescript-jest/src/filter.ts
+```
+
 ## Targets
 
 | Target | Directory | Command | JUnit report |

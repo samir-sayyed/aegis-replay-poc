@@ -1,6 +1,6 @@
 {
   "id": "jest-proof-demo",
-  "invariant": "Category filtering retains matching item.",
+  "invariant": "Public catalog filtering never exposes internal products.",
   "proof_inputs": {
     "source_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
   },
@@ -12,8 +12,8 @@
   "target": "typescript-jest",
   "tests": [
     {
-      "class": "byCategory retains items in the requested category",
-      "name": "byCategory retains items in the requested category"
+      "class": "public product catalog",
+      "name": "never exposes internal products in a public category"
     }
   ]
 }

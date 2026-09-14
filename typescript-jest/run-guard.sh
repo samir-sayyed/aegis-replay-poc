@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 set -euo pipefail
 npm ci
-npm test -- --testNamePattern 'retains items in the requested category'
+npm test -- --testNamePattern 'never exposes internal products in a public category'

@@ -5,10 +5,11 @@ known_bad="$(mktemp)"
 alternate_bad="$(mktemp)"
 trap 'rm -f "$known_bad" "$alternate_bad"' EXIT
 
-sed -i.bak 's/return items.filter/return [] as Item[];\/\/ return items.filter/' typescript-jest/src/filter.ts
+sed -i.bak 's/ && item.visibility === "public"//' typescript-jest/src/filter.ts
 rm typescript-jest/src/filter.ts.bak
 git diff -- typescript-jest/src/filter.ts > "$known_bad"
-sed -i.bak 's/return \[\] as Item\[\];\/\/ return items.filter/return items.slice(0, 0);\/\/ return items.filter/' typescript-jest/src/filter.ts
+git checkout -- typescript-jest/src/filter.ts
+sed -i.bak 's/item.category === category && //' typescript-jest/src/filter.ts
 rm typescript-jest/src/filter.ts.bak
 git diff -- typescript-jest/src/filter.ts > "$alternate_bad"
 git checkout -- typescript-jest/src/filter.ts
@@ -16,16 +17,16 @@ git checkout -- typescript-jest/src/filter.ts
 if [ ! -f .aegis/antibodies/jest-proof-demo.json ]; then
   aegis antibody create jest-proof-demo \
   --directory . \
-  --invariant 'Category filtering retains matching item.' \
+  --invariant 'Public catalog filtering never exposes internal products.' \
   --target typescript-jest \
-  --test 'byCategory retains items in the requested category#byCategory retains items in the requested category' \
+  --test 'public product catalog#never exposes internal products in a public category' \
   --scope typescript-jest/src \
     --proof-input source_revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
   git add .aegis/antibodies
   git -c user.email=poc@example.invalid -c user.name='Aegis POC' commit -m 'record Jest POC antibody'
 fi
 
-aegis prove jest-proof-demo --directory . --known-bad "$known_bad" --alternate-bad "$alternate_bad" --control 'byCategory returns an empty list when category is unknown#byCategory returns an empty list when category is unknown'
+aegis prove jest-proof-demo --directory . --known-bad "$known_bad" --alternate-bad "$alternate_bad" --control 'public product catalog#returns an empty list when category is unknown'
 python - <<'PY'
 import json
 from pathlib import Path
