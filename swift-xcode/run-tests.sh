@@ -23,10 +23,10 @@ elif command -v swift >/dev/null 2>&1; then
         exit 2
     }
     {
-        printf '%s\\n' '<?xml version="1.0" encoding="UTF-8"?>'
-        printf '<testsuite name="SwiftPM" tests="%s" failures="0" errors="0" skipped="0">\\n' "$testcase_count"
+        printf '%s\n' '<?xml version="1.0" encoding="UTF-8"?>'
+        printf '<testsuite name="SwiftPM" tests="%s" failures="0" errors="0" skipped="0">\n' "$testcase_count"
         sed -n "s/.*Test Case '-\\[\\([^ ]*\\) \\([^]]*\\)\\]' passed.*/  <testcase classname=\"\\1\" name=\"\\2\"\\/>/p" "$log_path"
-        printf '%s\\n' '</testsuite>'
+        printf '%s\n' '</testsuite>'
     } > "$report_path"
 else
     echo "Swift toolchain is required to run Swift POC tests." >&2
