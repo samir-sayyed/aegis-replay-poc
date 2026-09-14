@@ -36,6 +36,7 @@ targets:
     runner: pytest-junit
     directory: python-pytest
     command: [python, -m, pytest, "tests/test_greeting.py::test_greeting_preserves_input_case"]
+    proof_command: [python, -m, pytest, tests/test_greeting.py]
     junit_xml: reports/junit.xml
     scope:
       - python-pytest/src
